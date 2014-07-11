@@ -23,6 +23,7 @@ class opennetadmin::app::setup (
   $db_name        = $opennetadmin::db_name,
   $db_user        = $opennetadmin::db_user,
   $db_password    = $opennetadmin::db_password,
+  $ona_url        = $opennetadmin::ona_url,
 ) {
   include 'opennetadmin::params'
 
