@@ -41,7 +41,7 @@ class opennetadmin::app::setup (
   # curl to initiate the installation
   $post_values_1 = "&overwrite=N&keep=N&database_host=${db_host}&dbtype=mysqlt&database_name=${db_name}&default_domain=${default_domain}&"
   $post_values_2 = "admin_login=${admin_user}&admin_passwd=${admin_password}&sys_login=${db_user}&sys_passwd=${db_password}"
-  $post_page = '${ona_url}/?install_submit=Y'
+  $post_page = "${ona_url}/?install_submit=Y"
   exec { 'opennetadmin-auto-install':
     command     => "curl -d \'${post_values_1}${post_values_2}\' ${post_page}",
     require     => [Package[$opennetadmin::params::curl_package],Service['httpd']],
