@@ -32,7 +32,11 @@ class opennetadmin::app (
   include 'opennetadmin::params'
 
   # Requeired PHP libraries
-  ensure_packages(['php5-gmp',$opennetadmin::params::wget_package])
+  # (except for RHEL and derivatives where it's in php-common)
+  if $operatingsystem != 'CentOS' and $operatingsystem != 'RedHat' {
+    ensure_packages(['php5-gmp'])
+  }
+  ensure_packages([$opennetadmin::params::wget_package])
 
   ## Resource defaults
   File {
