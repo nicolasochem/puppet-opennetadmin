@@ -44,7 +44,7 @@ class opennetadmin::app::setup (
   $post_page = "${ona_url}/?install_submit=Y"
   exec { 'opennetadmin-auto-install':
     command     => "/usr/bin/curl -d \'${post_values_1}${post_values_2}\' ${post_page}",
-    require     => [Package[$opennetadmin::params::curl_package],Service['apache2']],
+    require     => Package[$opennetadmin::params::curl_package],
     refreshonly => true,
     logoutput   => true,
     subscribe   => File["${ona_directory}/www/local/config/database_settings.inc.php"],
