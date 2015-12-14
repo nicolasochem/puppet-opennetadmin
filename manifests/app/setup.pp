@@ -43,7 +43,7 @@ class opennetadmin::app::setup (
   $post_values_2 = "admin_login=${admin_user}&admin_passwd=${admin_password}&sys_login=${db_user}&sys_passwd=${db_password}"
   $post_page = "${ona_url}/?install_submit=Y"
   exec { 'opennetadmin-auto-install':
-    command     => "curl -d \'${post_values_1}${post_values_2}\' ${post_page}",
+    command     => "/usr/bin/curl -d \'${post_values_1}${post_values_2}\' ${post_page}",
     require     => [Package[$opennetadmin::params::curl_package],Service['httpd']],
     refreshonly => true,
     logoutput   => true,
